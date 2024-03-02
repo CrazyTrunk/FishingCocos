@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "octopus",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.06666666666666667,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "8aab1ce9-43ff-429c-b905-322982f8ae8b"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "1b694f44-b803-4ed1-8f7a-b8701238ee53"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "989e5ced-351b-44be-b23f-08c7528a8819"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "1b694f44-b803-4ed1-8f7a-b8701238ee53"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
