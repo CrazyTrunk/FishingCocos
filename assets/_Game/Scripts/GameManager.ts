@@ -56,7 +56,7 @@ export class GameManager extends Component {
         console.log("Screen Touched")
     }
     update(deltaTime: number) {
-        let value = Math.abs(this.rotateSpeed * deltaTime);
+        let value = Math.abs(this.speed * deltaTime);
 
         switch (this.hookState) {
             case FishHookState.Rotation:
@@ -67,7 +67,7 @@ export class GameManager extends Component {
 
                 break;
             case FishHookState.Rewind:
-                this.line.height -= Math.abs(this.rotateSpeed * deltaTime);
+                this.line.height -= Math.abs(this.speed * deltaTime);
                 if (this.line.height <= this.originalHookPos) {
 
                 } else {
