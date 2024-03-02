@@ -6,6 +6,7 @@
       "height": 960,
       "fitWidth": false
     }
+<<<<<<< HEAD
   },
   "physics": {
     "collisionGroups": [
@@ -23,5 +24,7 @@
       "1": 4,
       "2": 2
     }
+=======
+>>>>>>> 3e4abfdc7a7fda0e40d455cdb7d00793f97365fc
   }
 }
