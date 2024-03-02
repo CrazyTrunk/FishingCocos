@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "shark",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.05,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "9538af50-658c-4a44-946e-2718571fc5f5"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "3e714b47-892d-4759-802f-8e56f7787dbb"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "a73a9f2d-b404-4e1f-9a14-69fb57eb7874"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

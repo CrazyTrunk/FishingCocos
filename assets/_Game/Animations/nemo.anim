@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "nemo",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.06666666666666667,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "1c372f97-a5ba-4fa0-abf5-a861f21fcf66"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "f726cb33-2eed-4e27-9451-797a481a4049"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "1c372f97-a5ba-4fa0-abf5-a861f21fcf66"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "cb9a465e-060f-4188-9457-d21b41d9dbb2"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
