@@ -1,22 +1,26 @@
 {
   "__version__": "1.0.6",
+  "fbx": {
+    "legacyFbxImporter": {
+      "visible": true
+    }
+  },
   "general": {
     "designResolution": {
       "width": 640,
-      "height": 960,
-      "fitWidth": false
+      "fitWidth": false,
+      "height": 960
     }
-<<<<<<< HEAD
   },
   "physics": {
     "collisionGroups": [
       {
         "index": 1,
-        "name": "Wall"
+        "name": "FishHook"
       },
       {
         "index": 2,
-        "name": "Player"
+        "name": "Wall"
       }
     ],
     "collisionMatrix": {
@@ -24,7 +28,5 @@
       "1": 4,
       "2": 2
     }
-=======
->>>>>>> 3e4abfdc7a7fda0e40d455cdb7d00793f97365fc
   }
 }
