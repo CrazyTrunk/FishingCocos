@@ -9,9 +9,9 @@ export class GameManager extends Component {
     @property({ type: Enum(FishHookState), tooltip: "The current movement state of the character" })
     hookState: FishHookState = FishHookState.Rotation;
     @property({ type: CCInteger, tooltip: "Speed Rotation of Hook" })
-    rotateSpeed: number = 20;
+    rotateSpeed: number = 50;
     @property({ type: CCInteger, tooltip: "Shoot Speed Of Hooks" })
-    speed: number = 20;
+    speed: number = 200;
     private angle: number = 0;
     private originalHookPos: number;
     @property({ type: UITransform, tooltip: "The line of hook" })
@@ -52,11 +52,12 @@ export class GameManager extends Component {
     onHookShot() {
 
     }
+
     OnTouchStart(event: EventTouch) {
         console.log("Screen Touched")
     }
     update(deltaTime: number) {
-        let value = Math.abs(this.speed * deltaTime);
+        let value = Math.abs(this.speed * deltaTime * 2);
 
         switch (this.hookState) {
             case FishHookState.Rotation:
@@ -67,14 +68,21 @@ export class GameManager extends Component {
 
                 break;
             case FishHookState.Rewind:
-                this.line.height -= Math.abs(this.speed * deltaTime);
+                this.line.height -= Math.abs(value);
                 if (this.line.height <= this.originalHookPos) {
-
+                    this.hookState = FishHookState.Rotation;
                 } else {
                     this.line.height -= value;
                 }
                 break;
         }
+    }
+
+    public setHook(state: FishHookState) {
+        this.hookState = state;
+    }
+    public catchItem(item: Node) {
+
     }
 }
 
