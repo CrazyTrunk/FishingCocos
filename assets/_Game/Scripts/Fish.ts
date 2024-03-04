@@ -1,4 +1,4 @@
-import { _decorator, Component, Animation, Node, CCInteger } from 'cc';
+import { _decorator, Component, Animation, Node, CCInteger, SpriteFrame } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Fish')

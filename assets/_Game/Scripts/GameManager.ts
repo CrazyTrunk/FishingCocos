@@ -1,6 +1,9 @@
 import { __private, _decorator, CCInteger, Component, Enum, EventKeyboard, EventTouch, input, Input, KeyCode, Node, math, UITransform, resources, JsonAsset } from 'cc';
 import FishHookState from './Enum/FishHookState'
 import { Fish } from './Fish';
+import { FishPool } from './Pool/FishPool';
+import { MoveLeftRightScript } from './MoveLeftRightScript';
+import { FishMovevement } from './FishMovevement';
 const { ccclass, property } = _decorator;
 const { Vec3, toRadian } = math;
 
@@ -19,20 +22,22 @@ export class GameManager extends Component {
     fishHook: Node;
     @property({ type: Node, tooltip: "The Fish Hook" })
     hookChild: Node;
+    @property({ type: FishPool, tooltip: "Fish Pool" })
+    fishPool: FishPool;
     private data;
     private originalSpeed: number;
     private canShoot: boolean;
     protected start(): void {
+        this.fishPool.initPool();
+    }
+    onLoad() {
+        this.initListener();
+        this.originalHookPos = this.line.height;
         resources.load("data/fishinfo", JsonAsset, (err, res) => {
             this.data = res.json
         });
         this.originalSpeed = this.speed;
         this.canShoot = true;
-    }
-    onLoad() {
-        this.initListener();
-        this.originalHookPos = this.line.height;
-
     }
     onDestroy() {
         this.removeListener();
@@ -98,11 +103,15 @@ export class GameManager extends Component {
         this.hookState = state;
     }
     public catchItem(item: Node) {
+        if (this.hookState != FishHookState.Shoot)
+            return
         //change state to rewind
         item.setPosition(new Vec3(0, 0, 0));
         item.setParent(this.hookChild);
         item.angle = -this.fishHook.angle;
-        item.getComponent(UITransform).anchorY = 0;
+        // item.getComponent(UITransform).anchorY = 0.9;
+        item.getComponent(MoveLeftRightScript).isHooked = true;
+        item.getComponent(FishMovevement).isHooked = true;
         //speed se phai tru di theo kich thuoc cua ca'
         this.speed = this.speed - this.getFishById(item.getComponent(Fish).id).weight;
         this.hookState = FishHookState.Rewind;
@@ -110,6 +119,9 @@ export class GameManager extends Component {
     }
     getFishById(id: number) {
         return this.data.fishType.find(fish => fish.id === id);
+    }
+    public getData() {
+        return this.data;
     }
 }
 
