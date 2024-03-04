@@ -59,6 +59,12 @@ export class FishPool extends Component {
         this.pool.clear();
         this.initPool();
     }
+    returnToPool(item: Node)
+    {
+        item.removeFromParent();
+
+        this.pool.put(item);
+    }
 }
 
 

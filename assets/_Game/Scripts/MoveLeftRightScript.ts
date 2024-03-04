@@ -1,4 +1,5 @@
 import { _decorator, CCBoolean, CCInteger, Component, Node } from 'cc';
+import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('MoveLeftRightScript')
@@ -23,7 +24,6 @@ export class MoveLeftRightScript extends Component {
             }
             this.node.setPosition(pos);
         }
-
     }
 }
 
