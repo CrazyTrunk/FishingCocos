@@ -1,0 +1,28 @@
+{
+    "fishType": [
+        {
+            "id": 1,
+            "name": "nemoFish",
+            "points": 20,
+            "weight": 20
+        },
+        {
+            "id": 2,
+            "name": "octopusFish",
+            "points": 80,
+            "weight": 100
+        },
+        {
+            "id": 3,
+            "name": "shark",
+            "points": 100,
+            "weight": 120
+        },
+        {
+            "id": 4,
+            "name": "turtle",
+            "points": 10,
+            "weight": 60
+        }
+    ]
+}

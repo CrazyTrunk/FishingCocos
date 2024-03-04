@@ -7,18 +7,23 @@ export class MoveLeftRightScript extends Component {
     speed: number = 20;
     @property(CCBoolean)
     isLeft: boolean;
+    @property(CCBoolean)
+    isHooked: boolean;
     start() {
 
     }
 
     update(deltaTime: number) {
-        var pos = this.node.position.clone();
-        if (!this.isLeft) {
-            pos.x -= this.speed * deltaTime;
-        } else {
-            pos.x += this.speed * deltaTime;
+        if (!this.isHooked) {
+            var pos = this.node.position.clone();
+            if (!this.isLeft) {
+                pos.x -= this.speed * deltaTime;
+            } else {
+                pos.x += this.speed * deltaTime;
+            }
+            this.node.setPosition(pos);
         }
-        this.node.setPosition(pos);
+
     }
 }
 

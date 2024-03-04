@@ -1,4 +1,4 @@
-import { _decorator, Component, RigidBody2D, Collider2D, IPhysics2DContact, Contact2DType } from 'cc';
+import { _decorator, Component, RigidBody2D, Collider2D, IPhysics2DContact, Contact2DType, Vec3 } from 'cc';
 import { GameManager } from './GameManager';
 import FishHookState from './Enum/FishHookState';
 const { ccclass, property } = _decorator;
@@ -21,9 +21,8 @@ export class FishHook extends Component {
         if (otherCollider.group == 4) {
             this.gameManager.setHook(FishHookState.Rewind);
         }
-        if(otherCollider.group == 8){
-            console.log("trung ca")
-
+        if (otherCollider.group == 8) {
+            this.gameManager.catchItem(otherCollider.node);
         }
     }
 

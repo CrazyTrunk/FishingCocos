@@ -10,19 +10,23 @@ export class FishMovevement extends Component {
     frequency: number = 0.5;
     @property(CCBoolean)
     inverted: boolean = false;
-
+    @property(CCBoolean)
+    isHooked: boolean = false;
     start() {
         this.sinCenterY = this.node.position.y
     }
 
     update(deltaTime: number) {
-        var pos: Vec3 = this.node.position;
-        var sin = Math.sin(pos.x * this.frequency) * this.amplitude;
-        if(this.inverted){
-            sin*=-1;
+        if (!this.isHooked) {
+            var pos: Vec3 = this.node.position;
+            var sin = Math.sin(pos.x * this.frequency) * this.amplitude;
+            if (this.inverted) {
+                sin *= -1;
+            }
+            pos.y = this.sinCenterY + sin;
+            this.node.setPosition(pos);
         }
-        pos.y = this.sinCenterY + sin;
-        this.node.setPosition(pos);
+
     }
 }
 
