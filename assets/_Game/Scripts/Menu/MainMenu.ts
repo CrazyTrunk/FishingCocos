@@ -1,10 +1,14 @@
-import { _decorator, Component, Node, Button, __private, tween, Vec3 } from 'cc';
+import { _decorator, Component, Node, Button, __private, tween, Vec3, Sprite } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainMenu')
 export class MainMenu extends Component {
     @property({ type: Button, tooltip: "Sound Button", })
     public soundButton: Button = null;
+    @property({ type: Node, tooltip: "Sound On", })
+    public soundOn: Node;
+    @property({ type: Node, tooltip: "Sound Off", })
+    public soundOff: Node = null;
     @property({ type: Button, tooltip: "Info Button", })
     public infoButton: Button = null;
     @property({ type: Button, tooltip: "Play Game", })
@@ -20,16 +24,24 @@ export class MainMenu extends Component {
     };
     private data;
     protected onLoad(): void {
+        this.data = {
+            isSoundOn: true
+        }
         this.soundButton.node.on(Button.EventType.CLICK, this.onSoundClick, this)
         this.infoButton.node.on(Button.EventType.CLICK, this.onInfoClick, this)
         this.playGame.node.on(Button.EventType.CLICK, this.onPlayGameClick, this)
         this.shopButton.node.on(Button.EventType.CLICK, this.onShopButtonClick, this)
-
-        this.data = {
-            isSoundOn: true
+        this.onOffSound();
+    }
+    onOffSound() {
+        if (this.data.isSoundOn) {
+            this.soundOn.active = true;
+            this.soundOff.active = false;
+        } else {
+            this.soundOn.active = false;    
+            this.soundOff.active = true;
         }
     }
-
     resetButtonStateAfterTween(currentNode: Node, buttonKey: string) {
         tween(currentNode).stop();
         tween(currentNode)
@@ -41,13 +53,15 @@ export class MainMenu extends Component {
             .start();
     }
     onSoundClick(): void {
-        if (this.buttonStates.infoButton) return;
-        this.buttonStates.infoButton = true;
+        if (this.buttonStates.soundButton) return;
+        this.buttonStates.soundButton = true;
+        this.data.isSoundOn = !this.data.isSoundOn
+        this.onOffSound();
         this.resetButtonStateAfterTween(this.soundButton.node, 'soundButton');
     }
     onInfoClick() {
-        if (this.buttonStates.soundButton) return;
-        this.buttonStates.soundButton = true;
+        if (this.buttonStates.infoButton) return;
+        this.buttonStates.infoButton = true;
         this.resetButtonStateAfterTween(this.infoButton.node, 'infoButton');
 
     }
