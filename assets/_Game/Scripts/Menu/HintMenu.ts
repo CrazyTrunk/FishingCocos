@@ -6,19 +6,27 @@ export class HintMenu extends Component {
     @property(Node)
     hintNodes: Node[] = []; // Thay thế các Node bằng Prefab
 
-    private currentIndex: number = 0; // Index hiện tại của hint
-    start() {
-        // Khởi tạo hint đầu tiên
-        this.showHint(null, this.currentIndex);
+    @property(Node)
+    xMark: Node; // Thay thế các Node bằng Prefab
+    protected onEnable(): void {
+        console.log("onenable")
+        this.showHint(null, 0);
+        this.xMark.active = true;
     }
     private showHint(e: EventTouch, index: number) {
         this.hideAllHint();
         this.hintNodes[index].active = true;
     }
-    hideAllHint(){
+    hideAllHint() {
+        console.log('wtf')
         this.hintNodes.forEach(hint => {
             hint.active = false;
         });
+    }
+    hideAll(){
+        this.hideAllHint();
+        this.xMark.active = false;
+        this.node.active = false;
     }
 }
 

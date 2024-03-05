@@ -16,6 +16,10 @@ export class MainMenu extends Component {
     @property({ type: Button, tooltip: "Shop Button", })
     public shopButton: Button = null;
 
+    @property({ type: Node, tooltip: "Hint", })
+    public hintNote: Node = null;
+
+
     private buttonStates = {
         soundButton: false,
         infoButton: false,
@@ -61,6 +65,7 @@ export class MainMenu extends Component {
     }
     onInfoClick() {
         if (this.buttonStates.infoButton) return;
+        this.hintNote.active = true;
         this.buttonStates.infoButton = true;
         this.resetButtonStateAfterTween(this.infoButton.node, 'infoButton');
 
