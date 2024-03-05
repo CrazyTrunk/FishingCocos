@@ -9,7 +9,8 @@
     "designResolution": {
       "width": 640,
       "fitWidth": false,
-      "height": 960
+      "height": 960,
+      "fitHeight": false
     }
   },
   "physics": {
