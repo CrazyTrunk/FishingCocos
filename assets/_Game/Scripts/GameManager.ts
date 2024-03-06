@@ -4,12 +4,12 @@ import { Fish } from './Fish';
 import { FishPool } from './Pool/FishPool';
 import { MoveLeftRightScript } from './MoveLeftRightScript';
 import { FishMovevement } from './FishMovevement';
+import { Singleton } from './Core/Singleton';
 const { ccclass, property } = _decorator;
 const { Vec3, toRadian } = math;
 
 @ccclass('GameManager')
-export class GameManager extends Component {
-    private static _instance: GameManager = null;
+export class GameManager extends Singleton {
 
     @property({ type: Enum(FishHookState), tooltip: "The current movement state of the character" })
     hookState: FishHookState = FishHookState.Rotation;
@@ -32,18 +32,10 @@ export class GameManager extends Component {
     protected start(): void {
         this.fishPool.initPool();
     }
-    public static get instance(): GameManager {
-        return this._instance;
-    }
+
 
     private currentCatchItem: Node = null;
     onLoad() {
-        if (GameManager._instance) {
-            this.node.destroy();
-            console.warn("Another instance of GameManager was destroyed! There should only be one GameManager instance.");
-        } else {
-            GameManager._instance = this;
-        }
         // Khởi tạo các listener, dữ liệu, v.v...
         this.initListener();
         this.originalHookPos = this.line.height;
@@ -54,9 +46,6 @@ export class GameManager extends Component {
         this.canShoot = true;
     }
     onDestroy() {
-        if (GameManager._instance === this) {
-            GameManager._instance = null;
-        }
         this.removeListener();
     }
     initListener() {
